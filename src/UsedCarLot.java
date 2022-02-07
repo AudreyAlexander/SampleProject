@@ -1,20 +1,37 @@
 import java.util.ArrayList;
 
-public class UsedCarLot {
-    private ArrayList<Car> inventory;
-    private static int index;
+/** This class represents a Used Car Lot
+ * @author Audrey Alexander
+ */
 
+public class UsedCarLot {
+    /** The list of the Cars in the lot*/
+    private ArrayList<Car> inventory;
+
+    /** Instantiates a UsedCarLot object */
     public UsedCarLot(){
         inventory = new ArrayList<>();
-        index = 0;
     }
+
+    /**Method that returns inventory*/
     public ArrayList getInventory(){
         return inventory;
     }
+
+    /**Method that adds a newCar to the ArrayList
+     * <p>
+     * @param newCar new Car object to add to Inventory
+     */
     public void addCar(Car newCar){
-        inventory.add(index, newCar);
-        index ++;
+        inventory.add(newCar);
     }
+
+    /**Method that moves the Car at one index to another
+     * <p>
+     * @param num1 initial index of the Car
+     * @param num2 final index of the Car
+     * @return whether or not the swap was successful
+     */
     public boolean swap(int num1, int num2){
         if (((num1 > 0) && (num1 < inventory.size())) && ((num2 > 0) && (num2 < inventory.size())))
         {
@@ -32,44 +49,38 @@ public class UsedCarLot {
     }
     // ADD THESE FOUR NEW METHODS TO UsedCarLot
 
-    /* Adds a Car to the inventory list at the index specified
-        by indexToAdd; this method increases the size of inventory by 1
-        PRECONDITION: 0 <= indexToAdd < inventory.size()
-        DUE TO THIS PRECONDITION, you do NOT need to check for boundary errors
-        like you did the other addCar method; also note that this method is void
-    */
+    /**Method that adds a Car to the inventory list at the index specified by indexToAdd
+     * <p>
+     * PRECONDITION: 0 &lt;= indexToAdd &lt; inventory.size()
+     * @param indexToAdd where to put the car
+     * @param carToAdd what Car to add
+     */
+
+
     public void addCar(int indexToAdd, Car carToAdd)
     {
         inventory.add(indexToAdd, carToAdd);
     }
 
-    /* "sells" the Car located at indexOfCarToSell which
-        removes it from the inventory list and shifting the remaining
-        Cars in the inventory list to the left to fill in the gap;
-        this method reduces the size of inventory by 1
 
-        Returns the Car that is being "sold" (removed from lot)
+    /** Method that sells a Car at a certain index, removes it from the Inventory ArrayList
+     * <p>
+     * PRECONDITION: indexOfCarToSell &lt;= inventory.size()
+     * @param indexOfCarToSell the index of the Car being sold
+     * @return the car being sold
+     */
 
-        PRECONDITION: indexOfCarToSell < inventory.size()
-
-        HINT: the ArrayList remove() method returns the removed element while also
-              removing it from the ArrayList
-      */
     public Car sellCarShift(int indexOfCarToSell)
     {
         return inventory.remove(indexOfCarToSell);
 
     }
 
-    /* "sells" the Car located at indexOfCarToSell,
-       but instead of removing it and shifting the inventory
-       list to the left, REPLACE the Car at indexOfCarToSell
-       with NULL, thus creating an "empty parking spot" on the lot;
-       this method does NOT reduce the size of inventory by 1
-
-       PRECONDITION: indexOfCarToSell < inventory.size()
-
-       This method returns the Car that is being "sold" (replaced with null)
+    /** Method that sells the Car at a specified index, but instead of shortening the ArrayList replaces it with "null"
+     * <p>
+     * PRECONDITION: indexOfCarToSell &lt;= inventory.size()
+     * @param indexOfCarToSell the index of the Car being sold
+     * @return the car being sold
      */
     public Car sellCarNoShift(int indexOfCarToSell)
     {
@@ -78,14 +89,12 @@ public class UsedCarLot {
         return saveCar;
     }
 
-    /* moves Car located at index indexOfCarToMove to index destinationIndex;
-       if destinationIndex > indexOfCarToMove, moves the Car to the right in
-       inventory; if destinationIndex < indexOfCarToMove, moves the
-       Car to the left in the inventory. All other cars in the inventory
-       should shift accordingly
 
-       PRECONDITIONS: indexOfCarToMove < inventory.size()
-                      destinationIndex < inventory.size()
+    /**Method that moves Car object located at one index to another index
+     *<p>
+     * PRECONDITION: indexOfCarToMove &lt;= inventory.size() destinationIndex &lt;= inventory.size()
+     * @param indexOfCarToMove original index of car
+     * @param destinationIndex final index of car
      */
     public void moveCar(int indexOfCarToMove, int destinationIndex)
     {
