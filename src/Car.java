@@ -7,6 +7,6 @@ public class Car {
         this.miles = miles;
     }
     public String toString(){
-        return model + " " + miles + "mi";
+        return "model: " + model + " " + miles + "mi";
     }
 }
